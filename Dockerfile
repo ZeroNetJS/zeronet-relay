@@ -4,7 +4,7 @@ COPY . /app
 WORKDIR /app
 VOLUME /config
 RUN npm i --production
-RUN npm i libp2p libp2p-secio libp2p-spdy libp2p-multiplex libp2p-tcp libp2p-websockets --production
+RUN npm i libp2p libp2p-secio libp2p-spdy libp2p-multiplex libp2p-tcp libp2p-websockets colors --production
 ENTRYPOINT ["/usr/local/bin/dumb-init", "node", "src/server/bin.js"]
-CMD ["/config/config.json"]
+CMD ["/config/config.json", "--allow-insecure-config"]
 EXPOSE 36778
