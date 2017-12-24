@@ -48,11 +48,20 @@
     "lib": "src"
   },
   "dependencies": {
+    "debug": "^3.1.0",
+    "interface-connection": "^0.3.2",
+    "lodash.includes": "^4.3.0",
+    "mafmt": "^3.0.2",
     "multiaddr": "github:mkg20001/js-multiaddr#znjs-relay-test",
+    "once": "^1.4.0",
+    "peer-id": "^0.10.4",
+    "peer-info": "^0.11.4",
     "protons": "^1.0.1",
+    "pull-cat": "^1.1.11",
     "pull-length-prefixed": "^1.3.0",
     "pull-redirectable": "~0.1.2",
     "pull-stream": "^3.6.1",
-    "zeronet-protocol": "~0.1.5"
+    "zeronet-msgpack": "^3.6.0",
+    "zeronet-protocol": "^0.1.5"
   }
 }
