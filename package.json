@@ -1,6 +1,6 @@
 {
   "name": "zeronet-relay",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "ZeroNetJS Browser to ZeroNetPy TCP relaying",
   "main": "index.js",
   "scripts": {
