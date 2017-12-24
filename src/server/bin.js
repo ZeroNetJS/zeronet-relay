@@ -5,7 +5,7 @@
 const Server = require('./')
 const Id = require('peer-id')
 
-if (process.argv[2] == 'genconf') {
+if (process.argv[2] === 'genconf') {
   Id.create((err, id) => {
     if (err) throw err
     console.log(JSON.stringify({id}, 0, 2))
@@ -17,7 +17,7 @@ if (process.argv[2] == 'genconf') {
   } catch (e) {
     require('colors')
     console.error('Failed to load config %s: %s'.red.bold, process.argv[2], e)
-    if (process.argv[3] == '--allow-insecure-config') {
+    if (process.argv[3] === '--allow-insecure-config') {
       console.error('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'.yellow)
       console.error('! WARNING: Insecure config file is being used!             '.yellow)
       console.error('! The private key of that config is public!                !'.yellow)

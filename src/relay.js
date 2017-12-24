@@ -164,7 +164,6 @@ class Relay extends EE {
     })
     return resolvable
   }
-
 }
 
 module.exports = Relay

@@ -1,3 +1,5 @@
+'use strict'
+
 const proto = require('protons')
 module.exports = proto(`
   message PartHandshake { // partial handshake for request
