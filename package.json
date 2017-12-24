@@ -26,13 +26,14 @@
   "devDependencies": {
     "aegir": "^12.3.0",
     "colors": "^1.1.2",
+    "hypercache": "^0.2.0",
     "libp2p": "^0.14.3",
     "libp2p-multiplex": "^0.5.1",
     "libp2p-secio": "^0.8.1",
     "libp2p-spdy": "^0.11.0",
     "libp2p-tcp": "^0.11.1",
     "libp2p-websockets": "^0.10.4",
-    "zeronet-common": "^0.2.1",
+    "zeronet-common": "^0.3.0",
     "zeronet-crypto": "^0.1.0",
     "zeronet-swarm": "^0.1.2"
   },

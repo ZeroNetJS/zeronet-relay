@@ -18,7 +18,7 @@ const zeronet = {
 const {tls, secio} = require('zeronet-crypto')
 
 Id.createFromJSON(require('./test/id'), (err, id) => {
-  const listen = ['/ip4/127.0.0.1/tcp/36778/ws/p2p-znjs-relay']
+  const listen = [process.env.USE_PROD ? '/dns/znjs-relay.servep2p.com/tcp/443/wss/p2p-znjs-relay' : '/ip4/127.0.0.1/tcp/36778/ws/p2p-znjs-relay']
 
   const relay = new Relay()
 
