@@ -117,7 +117,7 @@ class Relay extends EE {
         conn
       )
       const establish = redird.a
-      const data = new Connection(redird.b, {getObservedAddrs: cb => setImmediate(() => cb(null, [ma]))})
+      const data = new Connection(redird.b, {getObservedAddrs: cb => cb(null, [ma])})
       let f = true
       pull(
         cat([
