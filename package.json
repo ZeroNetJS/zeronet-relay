@@ -66,5 +66,8 @@
     "pull-stream": "^3.6.1",
     "zeronet-msgpack": "^3.6.0",
     "zeronet-protocol": "^0.1.5"
-  }
+  },
+  "contributors": [
+    "mkg20001 <mkg20001@gmail.com>"
+  ]
 }
