@@ -3,8 +3,7 @@ RUN wget -O /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/
 COPY . /app
 WORKDIR /app
 VOLUME /config
-RUN npm i --production
-RUN npm i libp2p libp2p-secio libp2p-spdy libp2p-multiplex libp2p-tcp libp2p-websockets colors --production
+RUN npm run _pre_server && npm i --production
 ENTRYPOINT ["/usr/local/bin/dumb-init", "node", "src/server/bin.js"]
 CMD ["/config/config.json", "--allow-insecure-config"]
 EXPOSE 36778
