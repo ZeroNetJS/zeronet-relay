@@ -6,13 +6,6 @@ const WS = require('libp2p-websockets')
 const PeerPool = require('zeronet-common/src/peer/pool').MainPool
 const Swarm = require('zeronet-swarm')
 
-const zeronet = {
-  rev: '0',
-  version: 'v0',
-  peer_id: Math.random().toString(),
-  peerPool: new PeerPool()
-}
-
 module.exports = {
   createNode: (id, relays, cb) => {
     const relay = new Relay()
@@ -35,7 +28,16 @@ module.exports = {
       id
     }
 
+    const zeronet = {
+      rev: '0',
+      version: 'v0',
+      peer_id: Math.random().toString()
+    }
+
     const swarm = new Swarm(conf, zeronet)
+
+    zeronet.peerPool = new PeerPool(swarm)
+
     relay.__setup({swarm: swarm.lp2p.lp2p, protocol: swarm.zero.protocol, zeronet})
     zeronet.swarm = swarm
 

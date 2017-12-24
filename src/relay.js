@@ -9,6 +9,7 @@ const multiaddr = require('multiaddr')
 
 const Handshake = require('zeronet-protocol/src/zero/handshake/')
 const cat = require('pull-cat')
+const Catch = require('pull-catch')
 const msgpack = require('zeronet-msgpack')()
 
 const Id = require('peer-id')
@@ -113,7 +114,9 @@ class Relay extends EE {
       const redird = redir()
       pull(
         conn,
+        Catch(err => log(err)), // just log, don't move the error further down or everything blows up
         redird,
+        Catch(err => log(err)), // just log, don't move the error further down or everything blows up
         conn
       )
       const establish = redird.a
