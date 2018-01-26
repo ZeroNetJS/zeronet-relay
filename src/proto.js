@@ -10,7 +10,7 @@ module.exports = proto(`
     required int32 rev = 3;
     // target_ip is by default false
     required string version = 4;
-    repeated string libp2p = 5; // libp2p upgrade magic
+    string upgradeLibp2p = 5; // libp2p upgrade magic
   }
 
   message Handshake {
@@ -23,7 +23,7 @@ module.exports = proto(`
     required int32 rev = 7;
     string target_ip = 8;
     required string version = 9;
-    repeated string libp2p = 10;
+    string upgradeLibp2p = 10;
     bool own = 11;
   }
 

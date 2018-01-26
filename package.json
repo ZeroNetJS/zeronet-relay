@@ -35,7 +35,7 @@
     "libp2p-websockets": "^0.10.4",
     "zeronet-common": "^0.3.0",
     "zeronet-crypto": "^0.1.0",
-    "zeronet-swarm": "^0.1.4"
+    "zeronet-swarm": "^0.2.0"
   },
   "repository": {
     "type": "git",
@@ -65,7 +65,7 @@
     "pull-redirectable": "~0.1.2",
     "pull-stream": "^3.6.1",
     "zeronet-msgpack": "^3.6.0",
-    "zeronet-protocol": "~0.1.7"
+    "zeronet-protocol": "~0.2.0"
   },
   "contributors": [
     "mkg20001 <mkg20001@gmail.com>"

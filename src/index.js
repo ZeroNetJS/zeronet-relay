@@ -1,89 +1,30 @@
 'use strict'
 
-const mafmt = require('mafmt')
-const includes = require('lodash.includes')
-const once = require('once')
-const EventEmitter = require('events').EventEmitter
+const Relay = require('./transport')
 
-const RELAY = require('./relay')
+const debug = require('debug')
+const log = debug('zeronet:relay')
 
-function noop () {}
+module.exports = function () {
+  this.hooks = {
+    pre: (opt, zeronet, protocol) => {
+      if ((opt.libp2p || opt.libp2p == null) && (opt.zero || opt.zero == null) && opt.relay) {
+        log('enable')
+        this.relayOpt = {zeronet, protocol}
+        const relay = this.relay = new Relay()
+        opt.zero.transports = (opt.zero.transports || []).concat([relay])
+        opt.zero.listen = (opt.zero.listen || []).concat(opt.relay)
+        this.relays = opt.relay
 
-class Relay {
-  __setup (opt) {
-    this.relay = new RELAY(opt)
-  }
-
-  dial (ma, options, callback) {
-    if (typeof options === 'function') {
-      callback = options
-      options = {}
-    }
-
-    callback = callback || noop
-
-    callback = once(callback)
-
-    return this.relay.dial(ma, callback)
-  }
-
-  createListener (options, handler) {
-    if (typeof options === 'function') {
-      handler = options
-      options = {}
-    }
-
-    handler = handler || (() => {})
-
-    const listener = new EventEmitter()
-
-    listener.close = (options, callback) => {
-      if (typeof options === 'function') {
-        callback = options
-        options = {}
+        Object.assign(this.hooks, { // only execute these if both swarms are activated
+          postLp2p: lp2p => {
+            this.relayOpt.swarm = lp2p.lp2p
+          },
+          post: () => {
+            this.relay.__setup(this.relayOpt)
+          }
+        })
       }
-      callback = callback || noop
-      options = options || {}
-
-      listener.emit('close')
-      setImmediate(() => callback())
     }
-
-    listener.listen = (ma, callback) => {
-      listener.ma = ma
-      this.relay.addRelay(ma)
-      setImmediate(() => callback())
-      listener.emit('listening')
-    }
-
-    listener.getAddrs = (callback) => {
-      callback(null, listener.ma ? [listener.ma] : [])
-    }
-
-    return listener
-  }
-
-  filter (multiaddrs) {
-    if (!Array.isArray(multiaddrs)) {
-      multiaddrs = [multiaddrs]
-    }
-
-    return multiaddrs.filter((ma) => {
-      if (includes(ma.protoNames(), 'p2p-circuit')) {
-        return false
-      }
-
-      if (includes(ma.protoNames(), 'p2p-znjs-relay')) {
-        return true
-      }
-
-      if (includes(ma.protoNames(), 'ipfs')) {
-        ma = ma.decapsulate('ipfs')
-      }
-
-      return mafmt.TCP.matches(ma)
-    })
   }
 }
-
-module.exports = Relay

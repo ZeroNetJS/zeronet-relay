@@ -15,7 +15,7 @@ const HandshakeClient = require('zeronet-protocol/src/zero/handshake/client')
 const once = require('once')
 
 module.exports = swarm => {
-  swarm.handle('/zeronet/relay/1.0.0', (protocol, conn) => {
+  swarm.handle('/zeronet/relay/1.1.0', (protocol, conn) => {
     const redird = redir(conn)
     const establish = redird.a
     const data = redird.b
@@ -29,6 +29,7 @@ module.exports = swarm => {
       lp.decode(),
       pull.map(v => proto.EstablishRequest.decode(v)),
       pull.asyncMap((v, cb) => { // process via asyncMap. do NOT return errors. just {success: false}
+        if (!v.handshake.upgradeLibp2p) delete v.handshake.upgradeLibp2p
         log('got request', v)
         redird.changeDest('b', 'src') // change src read early
         const ma = multiaddr(v.ma)

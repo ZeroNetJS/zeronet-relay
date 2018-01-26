@@ -34,7 +34,7 @@ class RelayPeer {
     return this.peer.multiaddrs
   }
   dial (cb) {
-    this.swarm.dial(this.peer, '/zeronet/relay/1.0.0', cb)
+    this.swarm.dial(this.peer, '/zeronet/relay/1.1.0', cb)
   }
 }
 
@@ -47,6 +47,7 @@ function RelayDialer () {
       log('dialing relay %s', peer.idb58)
       dials++
       peer.dial((e, c) => {
+        if (e) log('dialing relay %s: %s', peer.idb58, e)
         if (c) source.push([c, peer])
         dials--
         if (!dials) source.end()
@@ -66,9 +67,10 @@ class RelayPool extends EE {
   }
 
   addToPool (ma) {
-    const id = new Id(Buffer.from('')) // Id.createFromB58String(ma.decapsulate('p2p-znjs-relay').toString().split('ipfs/').pop())
+    const id = Id.createFromB58String(ma.toString().split('ipfs/').pop())
     const pi = new RelayPeer(new Peer(id), this.main.swarm)
-    pi.multiaddrs.add(ma.decapsulate('p2p-znjs-relay'))
+    // console.log(ma.toString().replace('/p2p-znjs-relay', ''))
+    pi.multiaddrs.add(ma.toString().replace('/p2p-znjs-relay', ''))
     this.addresses.push(ma)
     this.peers.push(pi)
     return pi
@@ -107,6 +109,7 @@ class Relay extends EE {
     log('dialing %s', ma)
     if (!this.relayPool.peers.length) return cb(new Error('No relays found!'))
     this.relayPool.getActiveRelay((err, conn, peer) => {
+      if (err) log('dialing %s: %s', ma, err)
       if (err) return cb(err)
       log('using relay %s to dial %s', peer.idb58, ma)
       ma = multiaddr(ma)

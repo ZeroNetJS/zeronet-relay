@@ -14,7 +14,7 @@ describe('relay', () => {
     before(cb => Id.createFromJSON(require('./id'), (e, _id) => {
       if (e) return cb(e)
       id = _id // /ipfs/QmVBLKkJ5kk8PYjKCwEc9RWgtYarykWQBnNSvWHYhEyXmd
-      createNode(id, ['/ip4/127.0.0.1/tcp/36778/ws/p2p-znjs-relay'], (e, _swarm) => {
+      createNode(id, ['/ip4/127.0.0.1/tcp/36778/ws/p2p-znjs-relay/ipfs/QmVBLKkJ5kk8PYjKCwEc9RWgtYarykWQBnNSvWHYhEyXmd'], (e, _swarm) => {
         if (e) return cb(e)
         swarm = _swarm
         cb()
