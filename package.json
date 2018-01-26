@@ -24,18 +24,18 @@
   "author": "Maciej Krüger <mkg20001@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "aegir": "^12.3.0",
+    "aegir": "^12.4.0",
     "colors": "^1.1.2",
     "hypercache": "^0.2.0",
-    "libp2p": "^0.14.3",
+    "libp2p": "^0.15.1",
     "libp2p-multiplex": "^0.5.1",
-    "libp2p-secio": "^0.8.1",
+    "libp2p-secio": "^0.9.0",
     "libp2p-spdy": "^0.11.0",
-    "libp2p-tcp": "^0.11.1",
+    "libp2p-tcp": "^0.11.2",
     "libp2p-websockets": "^0.10.4",
     "zeronet-common": "^0.3.0",
     "zeronet-crypto": "^0.1.0",
-    "zeronet-swarm": "^0.1.2"
+    "zeronet-swarm": "^0.1.4"
   },
   "repository": {
     "type": "git",
@@ -65,7 +65,7 @@
     "pull-redirectable": "~0.1.2",
     "pull-stream": "^3.6.1",
     "zeronet-msgpack": "^3.6.0",
-    "zeronet-protocol": "~0.1.5"
+    "zeronet-protocol": "~0.1.7"
   },
   "contributors": [
     "mkg20001 <mkg20001@gmail.com>"

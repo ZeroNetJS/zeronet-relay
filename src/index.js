@@ -72,6 +72,7 @@ class Relay {
       if (includes(ma.protoNames(), 'p2p-circuit')) {
         return false
       }
+
       if (includes(ma.protoNames(), 'p2p-znjs-relay')) {
         return true
       }

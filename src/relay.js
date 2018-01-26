@@ -7,7 +7,7 @@ const log = debug('zeronet:relay')
 const EE = require('events').EventEmitter
 const multiaddr = require('multiaddr')
 
-const Handshake = require('zeronet-protocol/src/zero/handshake/')
+const Handshake = require('zeronet-protocol/src/zero/handshake')
 const cat = require('pull-cat')
 const Catch = require('pull-catch')
 const msgpack = require('zeronet-msgpack')()
@@ -66,7 +66,7 @@ class RelayPool extends EE {
   }
 
   addToPool (ma) {
-    const id = Id.createFromB58String(ma.toString().split('ipfs/').pop())
+    const id = new Id(Buffer.from('')) // Id.createFromB58String(ma.decapsulate('p2p-znjs-relay').toString().split('ipfs/').pop())
     const pi = new RelayPeer(new Peer(id), this.main.swarm)
     pi.multiaddrs.add(ma.decapsulate('p2p-znjs-relay'))
     this.addresses.push(ma)

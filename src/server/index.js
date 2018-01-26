@@ -16,7 +16,7 @@ module.exports = function ZNRelayServer (config) {
   const self = this
 
   if (!config) throw new Error('Config is required')
-  if (!config.listen) config.listen = ['/ip4/0.0.0.0/tcp/36777', '/ip6/::/tcp/36777', '/ip4/0.0.0.0/tcp/36778/ws']
+  if (!config.listen) config.listen = ['/ip4/0.0.0.0/tcp/36777', '/ip4/0.0.0.0/tcp/36778/ws']
 
   log('creating server', config)
 
