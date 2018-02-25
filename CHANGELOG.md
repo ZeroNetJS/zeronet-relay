@@ -1,3 +1,13 @@
+<a name="0.0.6"></a>
+## [0.0.6](https://github.com/ZeroNetJS/zeronet-relay/compare/v0.0.5...v0.0.6) (2018-02-25)
+
+
+### Bug Fixes
+
+* Hook errors in browser ([351ee72](https://github.com/ZeroNetJS/zeronet-relay/commit/351ee72))
+
+
+
 <a name="0.0.5"></a>
 ## [0.0.5](https://github.com/ZeroNetJS/zeronet-relay/compare/v0.0.4...v0.0.5) (2018-02-25)
 
