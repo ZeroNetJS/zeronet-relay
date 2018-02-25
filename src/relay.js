@@ -34,7 +34,7 @@ class RelayPeer {
     return this.peer.multiaddrs
   }
   dial (cb) {
-    this.swarm.dial(this.peer, '/zeronet/relay/1.1.0', cb)
+    this.swarm.dialProtocol(this.peer, '/zeronet/relay/1.1.0', cb)
   }
 }
 
