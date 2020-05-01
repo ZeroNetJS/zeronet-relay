@@ -14,7 +14,9 @@
     "release-major": "aegir release --type major",
     "coverage": "aegir coverage",
     "coverage-publish": "aegir coverage -u",
-    "_pre_server": "node -e 'var p=require(\"./package.json\");for(var dep in p.devDependencies)(dep.startsWith(\"libp2p\")||dep.startsWith(\"colors\"))&&(p.dependencies[dep]=p.devDependencies[dep]);delete p.devDependencies,require(\"fs\").writeFileSync(\"./package.json\",JSON.stringify(p,0,2));'"
+    "_pre_server": "node -e 'var p=require(\"./package.json\");for(var dep in p.devDependencies)(dep.startsWith(\"libp2p\")||dep.startsWith(\"colors\"))&&(p.dependencies[dep]=p.devDependencies[dep]);delete p.devDependencies,require(\"fs\").writeFileSync(\"./package.json\",JSON.stringify(p,0,2));'",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "keywords": [
     "zeronet",
@@ -65,9 +67,11 @@
     "pull-redirectable": "~0.1.2",
     "pull-stream": "^3.6.2",
     "zeronet-msgpack": "^3.6.0",
-    "zeronet-protocol": "~0.2.1"
+    "zeronet-protocol": "~0.2.1",
+    "snyk": "^1.316.1"
   },
   "contributors": [
     "mkg20001 <mkg20001@gmail.com>"
-  ]
+  ],
+  "snyk": true
 }
