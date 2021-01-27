@@ -57,7 +57,7 @@
     "mafmt": "^4.0.0",
     "multiaddr": "github:mkg20001/js-multiaddr#znjs-relay-test",
     "once": "^1.4.0",
-    "peer-id": "~0.10.6",
+    "peer-id": "~0.14.3",
     "peer-info": "~0.11.6",
     "protons": "^1.0.1",
     "pull-cat": "^1.1.11",
